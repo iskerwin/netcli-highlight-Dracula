@@ -1,0 +1,83 @@
+XDM-RM-PSB7050-01#show int description
+Interface                      Status         Protocol Description
+Et1                            up             up       REX-11
+Et2                            up             up       REX-13
+Et3                            down           down     DEV1-XX-YY-08-01_xe-0/1/0
+Et4                            up             up       REX-14
+Et5                            up             up       REX-15
+Et6                            up             up       REX-16
+Et7                            up             up       REX-17
+Et8                            up             up       REX-18
+Et9                            up             up       REX-19
+Et10                           up             up       REX-20
+Et11                           down           notpresent "XDM-RM-S1-PSS5100-01 xe-0/0/23:0"
+Et12                           up             up       REX-13
+Et13                           up             up       REX-13
+Et14                           up             up       REX-13
+Et15                           up             up       REX-13
+Et16                           up             up       REX-13
+Et17                           down           notpresent "XDM-RM-S1-PSS5100-01 xe-0/0/23:1"
+Et18                           admin down     down
+GigabitEthernet 0/2/40         down           down     XDM-RM-hdp7036-01_et35
+GigabitEthernet 1/2/40         down           down     XDM-RM-hdp7036-01_et35
+GigabitEthernet 1/0/40         down           down     XDM-RM-hdp7036-01_et35
+TenGigabitEthernet 1/2/40      down           down     XDM-RM-hdp7036-01_et35
+Po3                            down           lowerlayerdown "EtherChannel to XDM-RM-S1-PSS5110-10"
+Po5                            admin down     down     "CONNECTION TO DEV1-XX-YY-01 AE5"
+Po7                            down           lowerlayerdown "CONNECTION TO DEV1-XX-YY-02 AE7"
+Vl300                          down           lowerlayerdown
+Vl3001                         up             up
+GigabitEthernet 0/2            up        30     Full     1000M     fiber
+GigabitEthernet 1/22           up        30     Full     1000M     fiber
+GigabitEthernet 0/2/41         down      30     Unknown  Unknown   fiber
+GigabitEthernet 2/0/42         down      30     Unknown  Unknown   fiber
+GigabitEthernet 1/0/43         down      30     Unknown  Unknown   fiber
+GigabitEthernet 2/2/44         down      30     Unknown  Unknown   fiber
+GigabitEthernet 2/3/45         down      30     Unknown  Unknown   fiber
+GigabitEthernet 2/2/46         down      30     Unknown  Unknown   fiber
+GigabitEthernet 2/2/47         down      30     Unknown  Unknown   fiber
+GigabitEthernet 2/2/48         down      30     Unknown  Unknown   fiber
+TenGigabitEthernet 1/1/49      down      1      Unknown  Unknown   fiber
+TenGigabitEthernet 1/1/50      down      1      Unknown  Unknown   fiber
+TenGigabitEthernet 1/1/51      down      1      Unknown  Unknown   fiber
+TenGigabitEthernet 1/1/52      down      1      Unknown  Unknown   fiber
+TenGigabitEthernet 1/2/49      down      1      Unknown  Unknown   fiber
+TenGigabitEthernet 1/2/50      up        routed Full     1000M     fiber
+TenGigabitEthernet 1/2/51      up               Full     10G       fiber
+TenGigabitEthernet 1/2/52      up               Full     10G       fiber
+TenGigabitEthernet 2/1/49      down      1      Unknown  Unknown   fiber
+TenGigabitEthernet 2/1/50      down      1      Unknown  Unknown   fiber
+TenGigabitEthernet 2/1/51      down      1      Unknown  Unknown   fiber
+TenGigabitEthernet 2/1/52      down      1      Unknown  Unknown   fiber
+TenGigabitEthernet 2/2/49      down      1      Unknown  Unknown   fiber
+TenGigabitEthernet 2/2/50      up        routed Full     1000M     fiber
+TenGigabitEthernet 2/2/51      up               Full     10G       fiber
+TenGigabitEthernet 2/2/52      up               Full     10G       fiber
+AggregatePort 1                up        1      Full     1000M     copper
+
+interface GigabitEthernet 1/1/32
+ description [AP交换机]
+ description [防火墙]
+ description [路由器]
+
+ interface GigabitEthernet 1/1/1
+ description [TO-WS7208-A-Gi0/2]
+ port-group 1
+
+ vlan 1
+ name 无线AP
+!
+Vlan 20
+ name 办公网
+!
+VLAN 30
+ name 客控系统
+!
+vlan 40
+ name 运营系统
+!
+vlan 50
+ name IPTV
+!
+vlan 70
+ name 门禁系统

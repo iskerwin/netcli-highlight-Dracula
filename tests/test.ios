@@ -1,0 +1,35 @@
+Router(config)#class-map ?
+  WORD       class-map name
+  match-all  Logical-AND all matching statements under this classmap
+  match-any  Logical-OR all matching statements under this classmap
+Router(config)#class-map ruijie
+
+1、配置接口可用带宽比例
+RSR-A(config)#interface Serial 2/1
+RSR-A(config-if - Serial 2/1)#max-reserved-bandwidth 95
+//默认情况下，分配给所有类别的带宽总和不能超过接口可用带宽的75%。余下的25%用于传输控制数据流和路由选择数据流。在实际使用中，一般推荐配置为95-99，充分利用链路带宽的同时，确保预留部分带宽给路由协商等控制报文使用。
+
+2、用ACL进行流量分类
+RSR-A(config)#access-list 100 permit ip 192.168.1.0 0.0.0.255 any     //定义视频网段数据流
+RSR-A(config)#access-list 101 permit ip 172.16.1.0 0.0.0.255 any       //定义生产网段数据流
+RSR-A(config)#access-list 102 permit ip 10.1.1.0 0.0.0.255 any           //定义办公网段数据流
+
+3、定义类别映射表，class-map关联ACL
+RSR-A(config)#class-map SP             //定义视频流分类，注意，这里的命名区分大小写
+RSR-A(config-cmap)#match access-group 100
+RSR-A(config-cmap)#class-map SC      //定义生产流分类
+RSR-A(config-cmap)#match access-group 101
+RSR-A(config-cmap)#class-map BG      //定义办公流分类
+RSR-A(config-cmap)#match access-group 102
+
+4、定义策略映射表，关联class-map，并对class-map对应分类打标
+RSR-A(config)#policy-map ruijie
+RSR-A(config-pmap)#class SP
+RSR-A(config-pmap-c)#priority 500          //定义视频流分类带宽保障500Kbps，priority 是LLQ的带宽保障关键字。这里的单位是kbps
+RSR-A(config-pmap)#class SC
+RSR-A(config-pmap-c)#bandwidth 600     //定义生产流分类带宽保障800Kbps,bandwidth 是CBWFQ的带宽保障关键字。这里的单位是kbps
+RSR-A(config-pmap-c)#class BG
+RSR-A(config-pmap-c)#bandwidth 800    //还可以使用带宽比例来配置 bandwidth percent 50
+5、在接口调用policy-map
+RSR-A(config)#interface Serial 2/1
+RSR-A(config-if - Serial 2/1)#service-policy output ruijie       //队列调度，只能应用在接口出方向

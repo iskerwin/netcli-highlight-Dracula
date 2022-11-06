@@ -1,0 +1,32 @@
+Colors
+
+
+Red                 (Red) (Light Red)
+f#FF0049 bold       Light Red on security policies (to-zone + destination-address)
+f#ff0000 bold       Total Red Deny on security policies
+
+
+Light Blue          (Light Blue)
+f#00D1DB bold       For any IPv4 and description on security policies / description
+
+
+Dark Blue
+f#00D1DB bold       For my device on username@device>
+
+Light Green         (Light Green)
+f#00DF3A            For my username on username@device>
+f#00F969            from-zone + source-address on security policies
+
+Bright Green        (Bright Green)
+f#6CFF00            policies on security policies
+
+
+Purple              (Purple)
+f#F701FF bold       security policies (Application)
+
+
+General
+f#6CFF00            Important Good messages - Interfaces/Vlan
+f#ff0000 bold       Error messages or interfaces down, etc.
+f#00F969 bold       Traffic IN or incoming direction
+f#FF0049 bold       Traffic OUT or outgoing direction
