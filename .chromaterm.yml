@@ -15,41 +15,46 @@ palette:
 rules:
 # GENERAL
   - description: For your (username)@(devicename)> (Purple)
-    regex: (^\w*)@
-    color: f.Purple
+    regex: (^\w*)@([a-zA-Z0-9\.\-\,]*)
+    color: 
+      1: f.Purple
+      2: f.Green
     exclusive: true
 
-  - description: IPv4s (Purple)
-    regex: \b(?<!\.)((25[0-5]|(2[0-4]|[0-1]?\d)?\d)\.){3}(25[0-5]|(2[0-4]|[0-1]?\d)?\d)(/\d+)?(?!\.)\b
+  - description: IPv4s new (Purple)
+    # old regex: \"?\b(?<!\.)((25[0-5]|(2[0-4]|[0-1]?\d)?\d)\.){3}(25[0-5]|(2[0-4]|[0-1]?\d)?\d)(\/\d+)?(?!\.)\b\"?
+    regex: (\")?((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}(\")?
     color: f.Purple bold
     exclusive: true
 
   - description: IPv6s (Purple)
-    regex: \s*((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:)))(/\d+)?(?!\.)\b
+    # old regex: \s*((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:)))(/\d+)?(?!\.)\b
+    regex: (([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))
     color: f.Purple bold
     exclusive: true
 
   - description: Interface - Description (Dark)
-    regex: ^(\s*)(description|Description|Description[:]|remark|system message)\s.*$
+    regex: ^(\s*)(description[:]?|Description[:]?)\s.*$
     color: f.Dark italic
     exclusive: true
 
   - description: Interface - othe Description (Yellow)
-    regex: (description|Description|Description[:]|remark|system message)\s.*$
+    regex: (description[:]?|Description[:]?|(list-)?remark|system message)\s.*$
     color: f.Yellow italic
 
   - description: VLAN - Description (Yellow)
-    regex: \sname .*
+    regex: \sname\s.*
     color: f.Yellow italic
     exclusive: true
 
   - description: Switchport Mode Enable (Green) or disable (Pink)
-    regex: \b([Oo][Nn]|[Ee]nable|[Ee]nabled|protocol-enable|[Rr]un)\b|\b([Oo][Ff][Ff]|[Dd]isable|[Dd]isabled|[Qq]uit)\b
+    regex: ([a-zA-Z]+\-)?([Ee]nabled?)(?![-d])|([a-zA-Z]+\-)?([Dd]isabled?)(?![-d])
     color:
-      1: f.Green
-      2: f.Pink bold
-    exclusive: true
-
+      1: f.Green bold italic
+      2: f.Green bold
+      3: f.Pink bold italic
+      4: f.Pink bold
+ 
   - description: no service password-encryption (Pink)
     regex: no service password-encryption
     color: f.Pink bold italic
@@ -66,27 +71,25 @@ rules:
     exclusive: true
 
   - description:  links (Green)
-    regex: http:[^\s]*|https:[^\s]*|[a-zA-Z0-9]+\.[a-zA-Z0-9]+\.[a-zA-Z0-9]+
-    color: f.Green italic
-
-  - description: links (Green)
-    regex: (\w+\.\w+\.\w+\.\w+)
+    regex: \b(?<!-)https?(:\/.*)?(?!-)\b
     color: f.Green italic
 
   - description: MAC Address Notation (Purple)
-    regex: ([0-9a-f]{4}\.[0-9a-f]{4}\.[0-9a-f]{4}).*|([0-9A-Fa-f]{2}[\:-][0-9A-Fa-f]{2}[\:-][0-9A-Fa-f]{2}[\:-][0-9A-Fa-f]{2}[\:-][0-9A-Fa-f]{2}[\:-][0-9A-Fa-f]{2}).*
+    regex: ([0-9a-f]{4}\.[0-9a-f]{4}\.[0-9a-f]{4}).*|[a-fA-F0-9]{2}((:|-)[a-fA-F0-9]{2}){5}
     color: f.Purple
-    exclusive: true
+  #   exclusive: true
 
   - description: All Number (italic)
     regex: \d+
     color: italic
 
-  - description: system Time (italic)
-    regex: (\d+\-\d+\-\d+|[0-5]\d:[0-5]\d:[0-5]\d)|(\d+:[0-5]\d:[0-5]\d:[0-5]\d)
-    color: 
-      1: f.Cyan italic
-      2: f.Red
+  - description: system Clock (italic)
+    regex: \d+\-([0]?[0-9]|[1][0-2])\-([0-3][0-1]|[0-2]?[0-9])|([0-5]\d:[0-5]\d:[0-5]\d)
+    color:  f.Cyan italic
+
+  - description: system Start Total Time (italic)
+    regex: (\d+:[0-5]\d:[0-5]\d:[0-5]\d)
+    color:  f.Red italic
     exclusive: true
 
 # Show Run
@@ -116,33 +119,47 @@ rules:
     exclusive: true
 
   - description: DHCP Server (Orange)
-    regex: \b(domain-name|default-router|dns-server|host|client-(name|identifier)|option|lease|network)\b
+    regex: \b(domain-name|default-router|dns-server|([a-zA-Z]+\-)?host(?!-)|client-(name|identifier)|option|lease(-threshold)?|hardware-address)\b|\snetwork\s
     color: f.Green
+
+  - description: DHCP excluded-address (Pink)
+    regex: excluded-address
+    color: f.Pink bold
     exclusive: true
 
   - description: Interfaces in shutdown (Pink) no shutdown (Green)
-    regex: (shutdown)|(no shutdown)
+    regex: (shutdown)|(no\sshutdown)
     color:
       1: f.Pink bold strike invert
       2: f.Green
     exclusive: true
 
-  - description: route-map name (Cyan)
-    regex: (route-map\s[a-zA-Z0-9_-]+)|(ip\snat\s[a-zA-Z0-9_-]+)|\soverload|\sdomain|\sservice\b
-    color: f.Cyan bold
+  - description: show Slot Install name (Orange)
+    regex: ((?<=(?<!-)install(?!-)).*)|((?<!-)install(?!-))
+    color: 
+      1: f.Orange
+      2: f.Green italic
     exclusive: true
 
+  - description: show Slot Number (Green)
+    regex: \bSlot\b.*$
+    color: f.Green
+    exclusive: true
+
+  - description: route-map name (Cyan)
+    regex: (route-map\s|ip\snat\s)[a-zA-Z0-9_-]+|\soverload|\sdomain|\b([a-zA-Z]+\-)?service(?!-)\b
+    color: f.Cyan bold
+
   - description: route-map permit (Green) or deny (Pink)
-    regex: \s(permit)|(deny)\s
+    regex: \s(permit)\b|\s(deny)\b
     color:
       1: f.Green
       2: f.Pink bold
-    exclusive: true
 
-  - description: route-map permit seq number (Cyan)
-    regex: \s(permit|deny)\s([0-9]+)$
-    color: f.Cyan bold
-    exclusive: true
+  - description: route-map permit seq number (Cyan)(Ruijie)
+    regex: \s(permit|deny)([,\s\sa-z]+)?([0-9]+)$
+    color: 
+      3: f.Cyan bold
 
   - description: route-map set clauses (Green)
     regex: (?<=\s\s[Ss]et\s)[^\s].*|(?<=\s\s[Mm]atch\s)[^\s].*
@@ -159,7 +176,7 @@ rules:
     exclusive: true
 
   - description: ip access-list Name (Purple)
-    regex: (ip\s)?access-(list|group)\s([a-zA-Z0-9_-]+)?
+    regex: (ip\s)?access-(list[s]?|group)\s?([a-zA-Z0-9_-]+)?
     color: f.Purple bold
     exclusive: true
 
@@ -172,11 +189,6 @@ rules:
     regex: local-as .*
     color: f.Purple bold
 
-  - description: excluded-address (Pink)
-    regex: excluded-address
-    color: f.Pink bold
-    exclusive: true
-
   - description: Wlan-Config (Orange)
     regex: (?<=wlan-config\s\d)[\d^\s].*
     color: f.Orange bold
@@ -187,13 +199,13 @@ rules:
     color: f.Orange bold
     exclusive: true
 
-  - description: server (Orange)
-    regex: ssh-server|telnet-server|web-server|snmp-server|\b(monitor\ssession)\s\d+
-    color: f.Orange bold
+  - description: server (Green)
+    regex: \b([a-zA-Z]+\-)?server(?!-)\b|\b(monitor\ssession)\s\d+
+    color: f.Green
     exclusive: true
 
   - description: conted line (Cyan)
-    regex: (session|exec)-timeout|login.*|stopbits|access-class|transport (input|output).*$
+    regex: (session|exec)-timeout|\slogin\s.*|stopbits|access-class|transport (input|output).*$
     color: f.Cyan bold
     exclusive: true
 
@@ -202,13 +214,20 @@ rules:
     color: f.Dark italic
     exclusive: true
 
+  - description: show ap-config summary (Dark)
+    regex: \b(Run)\b|\b(Quit)\b
+    color: 
+      1: f.Green
+      2: f.Pink italic
+    exclusive: true
+
 # Show interface
   - description: Interface - Physical Interface (Green)
     regex: '^Physical interface: [a-zA-Z0-9/-]+'
     color: f.Green
 
   - description: Interface - Physical Link Status Up (Green) Down (Pink)
-    regex: \s([Uu][Pp])\b|\b([Dd][Oo][Ww][Nn])\b
+    regex: \b(?<!-)(up|Up|UP|ON|on|On)(?!-)\b|\b(?<!-)(down|Down|DOWN|OFF|Off|off)(?!-)\b
     color:
       1: f.Green bold
       2: f.Pink italic
@@ -218,11 +237,11 @@ rules:
     color: f.Cyan bold
 
   - description: Interface - Input rate (Green)
-    regex: Input (peak)? rate\s*:\s[0-9]+ (bps \([0-9]+ pps\)|bits\/sec)
+    regex: Input(\speak)? rate\s*:\s[0-9]+\s((bps)|(bits\/sec,))\s(\([0-9]+\spps\))?
     color: f.Green bold
 
   - description: Interface - Output rate (Pink)
-    regex: Output (peak)? rate\s*:\s[0-9]+ (bps \([0-9]+ pps\)|bits\/sec)
+    regex: Output(\speak)? rate\s*:\s[0-9]+\s((bps)|(bits\/sec,))\s(\([0-9]+\spps\))?
     color: f.Pink bold
 
   - description: MAC Address (Purple)
@@ -231,17 +250,12 @@ rules:
     exclusive: true
 
 # Interfaces
-  - description: show Slot Number (Purple)
-    regex: \bSlot\b.*$
-    color: f.Green
-    exclusive: true
- 
   - description: show interfaces description - Physical Interface name (Purple)
     regex: \b((Fast|Gigabit|TenGigabit|FortyGigabit|TwentyFiveGigabit|HundredGigabit|Bundle-)?Ethernet|Mgmt)\s\d+([\/a-zA-Z0-9\._-]+)?|\b((Fast|Gigabit|TenGigabit|FortyGigabit|TwentyFiveGigabit|HundredGigabit|Bundle\-)?Ethernet|Mgmt)
     color: f.Purple
   
   - description: show interfaces description - Virtual Interface name (Purple)
-    regex: \b([Ll]oopback|LOOPBACK|agg|[Aa]ggregatePort|^[Vv]lan|\svlan|VLAN|port-group|SSLVPN|SSL VPN)(\s\d+)?|\svlan\s
+    regex: \b([Ll]oopback|LOOPBACK|\bagg\b|[Aa]ggregate[Pp]ort|port-group|SSLVPN|SSL VPN)(\s\d+)?|(?<!-)(vlan|Vlan|VLAN)(?!-)(\s\d+)?
     color: f.Purple
 
   - description: show interfaces description - Interface name (Purple)
@@ -262,7 +276,7 @@ rules:
     exclusive: true
 
   - description: show interfaces duplex mode AUTO (Green) Full (Yellow) Half (Orange) Unknown (Pink)
-    regex: \s(AUTO)|\s([Ff]ull)|\s([Hh]alf)|\s([Uu]nknown)
+    regex: \s(AUTO)|\s([Ff]ull([\-]duplex)?)|\s([Hh]alf)|\s([Uu]nknown)
     color:
       1: f.Green
       2: f.Yellow
@@ -292,21 +306,8 @@ rules:
     regex: \s\svrf forwarding (.*)$
     color: f.Green
 
-  - description: Interface - Line Protocol Up(Green) Down|lowerl (Pink)
-    regex: ((line protocol is down.*$)|(line protocol is lowerlayer.*)|line protocol is up.*$)
-    color:
-      1: f.Green
-      2: f.Pink bold
-      3: f.Pink bold
-
-  - description: Interface - Last time it went Up (Green) or Down (Pink)
-    regex: (^\s\sUp\s.*)|(^\s\sDown\s.*)
-    color:
-      1: f.Green
-      2: f.Pink bold
-
   - description: Switchport Mode ACCESS (Cyan) or TRUNK (Purple)
-    regex: \b([Aa][Cc][Cc][Ee][Ss][Ss])\b|\b([Tt][Rr][Uu][Nn][Kk])\b
+    regex: \b(?<!-)(access|Access|ACCESS)(?!-)\b|\b(trunk|Trunk|TRUNK)\b
     color:
       1: f.Cyan
       2: f.Purple bold
@@ -324,6 +325,18 @@ rules:
     regex: \b([Nn]ative)\b
     color: f.Orange
     exclusive: true
+
+# VSU 
+  - description: show switch virtual 
+    regex: \b(LOCAL)|(REMOTE)|(ACTIVE|STANDBY|OK)\b
+    color: 
+      1: f.Orange
+      2: f.Cyan
+      3: f.Green
+
+  - description: show switch virtual config
+    regex: ([Pp]riority)(\s[0-9]+)?|(?<!-)(virtual)(-[a-z]+)?(?!-)|(standalone)
+    color: f.Orange
 
 # Security Policies
   - description: Security policies (white) from-zone (Green) to-zone (Pink) policy (Green)
@@ -344,7 +357,7 @@ rules:
     color: f.Cyan bold
 
   - description: Security Policies - Match|Then (White)
-    regex: \b(match|then)\b
+    regex: \b([a-zA-Z]+\-)?(match|then)(?!-)\b
     color: f.Green italic
 
   - description: Security Policies - Source-Adress (Green)
@@ -356,8 +369,11 @@ rules:
     color: f.Pink bold
 
   - description: Security Policies - Application (Purple)
-    regex: (application [\/a-zA-Z0-9\._-]+)?
-    color: f.Purple bold
+    regex: ((.*-)?application)(\s.*)
+    color: 
+      1: f.Purple bold
+      2: f.Purple bold
+      3: f.Yellow
 
   - description: Security Policies - deny (Pink Italic Style)
     regex: deny$
