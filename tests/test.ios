@@ -1,7 +1,0 @@
-config system ntp
-    set ntpsync enable
-    set type custom
-    config ntpserver
-        edit 1
-            set server "ntp.sjtu.edu.cn"
-        next

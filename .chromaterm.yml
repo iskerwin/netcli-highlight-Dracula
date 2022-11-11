@@ -1,282 +1,146 @@
+# @format
+
 palette:
   # Created from https://github.com/dracula/dracula-theme
-    Black       : '#282a36'
-    Grey        : '#44475a'
-    White       : '#f8f8f2'
-    Dark        : '#6272a4'
-    Cyan        : '#8be9fd'
-    Green       : '#50fa7b'
-    Orange      : '#ffb86c'
-    Pink        : '#ff79c6'
-    Purple      : '#bd93f9'
-    Red         : '#ff5555'
-    Yellow      : '#f1fa8c'
+  Black : "#282a36"
+  Grey  : "#44475a"
+  White : "#f8f8f2"
+  Dark  : "#6272a4"
+  Cyan  : "#8be9fd"
+  Green : "#50fa7b"
+  Orange: "#ffb86c"
+  Pink  : "#ff79c6"
+  Purple: "#bd93f9"
+  Red   : "#ff5555"
+  Yellow: "#f1fa8c"
 
 rules:
-# GENERAL
-  - description: For your (username)@(devicename)> (Purple)
+  # General
+  - description: (username)@(devicename)
     regex: (^\w*)@([a-zA-Z0-9\.\-\,]*)
-    color: 
+    color:
       1: f.Purple
       2: f.Green
     exclusive: true
 
-  - description: IPv4s new (Purple)
-    # old regex: \"?\b(?<!\.)((25[0-5]|(2[0-4]|[0-1]?\d)?\d)\.){3}(25[0-5]|(2[0-4]|[0-1]?\d)?\d)(\/\d+)?(?!\.)\b\"?
-    regex: (\")?((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}(\")?
-    color: f.Purple bold
-    exclusive: true
-
-  - description: IPv6s (Purple)
-    # old regex: \s*((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}))|:)))(/\d+)?(?!\.)\b
-    regex: (([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))
-    color: f.Purple bold
-    exclusive: true
-
-  - description: Interface - Description (Dark)
-    regex: ^(\s*)(description[:]?|Description[:]?)\s.*$
-    color: f.Dark italic
-    exclusive: true
-
-  - description: Interface - othe Description (Yellow)
-    regex: (description[:]?|Description[:]?|(list-)?remark|system message)\s.*$
-    color: f.Yellow italic
-
-  - description: VLAN - Description (Yellow)
-    regex: \sname\s.*
-    color: f.Yellow italic
-    exclusive: true
-
-  - description: Switchport Mode Enable (Green) or disable (Pink)
-    regex: ([a-zA-Z]+\-)?([Ee]nabled?)(?![-d])|([a-zA-Z]+\-)?([Dd]isabled?)(?![-d])
-    color:
-      1: f.Green bold italic
-      2: f.Green bold
-      3: f.Pink bold italic
-      4: f.Pink bold
- 
-  - description: no service password-encryption (Pink)
-    regex: no service password-encryption
-    color: f.Pink bold italic
-    exclusive: true
-
-  - description: Alloweccess (Cyan)
-    regex: (?<=allowaccess)[^\S+].*
-    color: f.Cyan bold italic
-    exclusive: true
-
-  - description: Allowed (Cyan)
-    regex: \b([Aa]llowed)\b
-    color: f.Cyan bold italic
-    exclusive: true
-
-  - description:  links (Green)
-    regex: \b(?<!-)https?(:\/.*)?(?!-)\b
-    color: f.Green italic
-
-  - description: MAC Address Notation (Purple)
-    regex: ([0-9a-f]{4}\.[0-9a-f]{4}\.[0-9a-f]{4}).*|[a-fA-F0-9]{2}((:|-)[a-fA-F0-9]{2}){5}
-    color: f.Purple
-  #   exclusive: true
-
-  - description: All Number (italic)
-    regex: \d+
-    color: italic
-
-  - description: system Clock (italic)
-    regex: \d+\-([0]?[0-9]|[1][0-2])\-([0-3][0-1]|[0-2]?[0-9])|([0-5]\d:[0-5]\d:[0-5]\d)
-    color:  f.Cyan italic
-
-  - description: system Start Total Time (italic)
-    regex: (\d+:[0-5]\d:[0-5]\d:[0-5]\d)
-    color:  f.Red italic
-    exclusive: true
-
-# Show Run
-  - description: Hostname (Yellow)
+  - description: hostname
     regex: (?<=hostname\s)[^\s].*
     color: f.Yellow bold
     exclusive: true
 
-  - description: Username and Password (Yellow)
-    regex: \b(username|\spassword|\spasswd|privilege)\s
+  - description: username and password
+    regex: \b(username|\spassword|\spasswd|secret|privilege|password)\s
     color: f.Yellow bold
     exclusive: true
 
-  - description: Version (Orange)
+  - description: version number
     regex: (?<=version\s).*$|(?<=version=).*$
     color: f.Orange bold
     exclusive: true
 
-  - description: Serial number (Purple)
+  - description: serial number
     regex: (?<=number\s).*$
     color: f.Purple italic
     exclusive: true
 
-  - description: IP DHCP Pool (Orange)
-    regex: (?<=ip\sdhcp\spool\s).*$
-    color: f.Orange bold
-    exclusive: true
+  - description: MAC address
+    regex: ([0-9a-f]{4}\.[0-9a-f]{4}\.[0-9a-f]{4}).*|[a-fA-F0-9]{2}((:|-)[a-fA-F0-9]{2}){5}
+    color: f.Purple
+  #   exclusive: true
 
-  - description: DHCP Server (Orange)
-    regex: \b(domain-name|default-router|dns-server|([a-zA-Z]+\-)?host(?!-)|client-(name|identifier)|option|lease(-threshold)?|hardware-address)\b|\snetwork\s
-    color: f.Green
-
-  - description: DHCP excluded-address (Pink)
-    regex: excluded-address
-    color: f.Pink bold
-    exclusive: true
-
-  - description: Interfaces in shutdown (Pink) no shutdown (Green)
-    regex: (shutdown)|(no\sshutdown)
-    color:
-      1: f.Pink bold strike invert
-      2: f.Green
-    exclusive: true
-
-  - description: show Slot Install name (Orange)
-    regex: ((?<=(?<!-)install(?!-)).*)|((?<!-)install(?!-))
-    color: 
-      1: f.Orange
-      2: f.Green italic
-    exclusive: true
-
-  - description: show Slot Number (Green)
-    regex: \bSlot\b.*$
-    color: f.Green
-    exclusive: true
-
-  - description: route-map name (Cyan)
-    regex: (route-map\s|ip\snat\s)[a-zA-Z0-9_-]+|\soverload|\sdomain|\b([a-zA-Z]+\-)?service(?!-)\b
-    color: f.Cyan bold
-
-  - description: route-map permit (Green) or deny (Pink)
-    regex: \s(permit)\b|\s(deny)\b
-    color:
-      1: f.Green
-      2: f.Pink bold
-
-  - description: route-map permit seq number (Cyan)(Ruijie)
-    regex: \s(permit|deny)([,\s\sa-z]+)?([0-9]+)$
-    color: 
-      3: f.Cyan bold
-
-  - description: route-map set clauses (Green)
-    regex: (?<=\s\s[Ss]et\s)[^\s].*|(?<=\s\s[Mm]atch\s)[^\s].*
-    color: f.Green
-
-  - description: prefix-list name (Purple)
-    regex: (prefix-list\s[a-zA-Z0-9_-]+)
-    color: f.Purple bold
-    exclusive: true
-
-  - description: prefix-list Matching prefixes eq|gre (Green)
-    regex: \s(eq\s[0-9]+|eq\s[a-z]+|ge\s[0-9]{1,2}|le\s[0-9]+)
-    color: f.Green
-    exclusive: true
-
-  - description: ip access-list Name (Purple)
-    regex: (ip\s)?access-(list[s]?|group)\s?([a-zA-Z0-9_-]+)?
-    color: f.Purple bold
-    exclusive: true
-
-  - description: vrf name (Green)
-    regex: \s\s\svrf .*
-    color: f.Green
-    exclusive: true
-
-  - description: local-as number (Purple)
-    regex: local-as .*
-    color: f.Purple bold
-
-  - description: Wlan-Config (Orange)
-    regex: (?<=wlan-config\s\d)[\d^\s].*
-    color: f.Orange bold
-    exclusive: true
-
-  - description: Flash (Orange)
-    regex: (?<=flash\:)[^\:].*$
-    color: f.Orange bold
-    exclusive: true
-
-  - description: server (Green)
-    regex: \b([a-zA-Z]+\-)?server(?!-)\b|\b(monitor\ssession)\s\d+
-    color: f.Green
-    exclusive: true
-
-  - description: conted line (Cyan)
-    regex: (session|exec)-timeout|\slogin\s.*|stopbits|access-class|transport (input|output).*$
-    color: f.Cyan bold
-    exclusive: true
-
-  - description: /! (Dark)
-    regex: ^!
-    color: f.Dark italic
-    exclusive: true
-
-  - description: show ap-config summary (Dark)
-    regex: \b(Run)\b|\b(Quit)\b
-    color: 
-      1: f.Green
-      2: f.Pink italic
-    exclusive: true
-
-# Show interface
-  - description: Interface - Physical Interface (Green)
-    regex: '^Physical interface: [a-zA-Z0-9/-]+'
-    color: f.Green
-
-  - description: Interface - Physical Link Status Up (Green) Down (Pink)
-    regex: \b(?<!-)(up|Up|UP|ON|on|On)(?!-)\b|\b(?<!-)(down|Down|DOWN|OFF|Off|off)(?!-)\b
-    color:
-      1: f.Green bold
-      2: f.Pink italic
-
-  - description: Interface - Last Flapped (Cyan)
-    regex: Last flapped\s+:\s.*$|(Last link state change time:)\s.*
-    color: f.Cyan bold
-
-  - description: Interface - Input rate (Green)
-    regex: Input(\speak)? rate\s*:\s[0-9]+\s((bps)|(bits\/sec,))\s(\([0-9]+\spps\))?
-    color: f.Green bold
-
-  - description: Interface - Output rate (Pink)
-    regex: Output(\speak)? rate\s*:\s[0-9]+\s((bps)|(bits\/sec,))\s(\([0-9]+\spps\))?
-    color: f.Pink bold
-
-  - description: MAC Address (Purple)
+  - description: MAC address
     regex: Current address:.*
     color: f.Purple bold
     exclusive: true
 
-# Interfaces
-  - description: show interfaces description - Physical Interface name (Purple)
-    regex: \b((Fast|Gigabit|TenGigabit|FortyGigabit|TwentyFiveGigabit|HundredGigabit|Bundle-)?Ethernet|Mgmt)\s\d+([\/a-zA-Z0-9\._-]+)?|\b((Fast|Gigabit|TenGigabit|FortyGigabit|TwentyFiveGigabit|HundredGigabit|Bundle\-)?Ethernet|Mgmt)
-    color: f.Purple
-  
-  - description: show interfaces description - Virtual Interface name (Purple)
-    regex: \b([Ll]oopback|LOOPBACK|\bagg\b|[Aa]ggregate[Pp]ort|port-group|SSLVPN|SSL VPN)(\s\d+)?|(?<!-)(vlan|Vlan|VLAN)(?!-)(\s\d+)?
-    color: f.Purple
+  - description: All number
+    regex: \d+
+    color: italic
 
-  - description: show interfaces description - Interface name (Purple)
-    regex: Dialer|Dot11Radio|ATM|BRI|Tunnel(Group-)?Async|BVI|Null|[Pp]ort-channel|Virtual-(Access|Dot11Radio|PPP|Template)
-    color: f.Purple
+  - description: system clock
+    regex: \d+\-([0]?[0-9]|[1][0-2])\-([0-3][0-1]|[0-2]?[0-9])|([0-5]\d:[0-5]\d:[0-5]\d)
+    color: f.Cyan italic
+
+  - description: system start total time
+    regex: (\d+:[0-5]\d:[0-5]\d:[0-5]\d)
+    color: bold invert italic
     exclusive: true
 
-  - description: show interfaces Medium-type Copper (Orange) Fiber (Yellow)
-    regex: ([Cc]opper)|([Ff]iber)
+  - description: flash files
+    regex: (?<=flash\:)[^\:].*$
+    color: f.Orange bold
+    exclusive: true
+
+  # IP_Address
+  - description: ip address v4
+    regex: \b((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\/\d+)?\b
+    color: f.Purple bold
+    exclusive: false
+
+  - description: subnet mask
+    regex: \s255\.\d{1,3}\.\d{1,3}\.\d{1,3}
+    color: f.Orange bold
+    exclusive: true
+
+  - description: wildcard mask
+    regex: \s0\.\d{1,3}\.\d{1,3}\.\d{1,3}[\/\d{1,2}]*
+    color: f.Yellow bold
+    exclusive: true
+
+  - description: ip address v6
+    regex: (([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))
+    color: f.Purple bold
+    exclusive: true
+
+  # Interfaces
+  - description: interface physical
+    regex: "^Physical interface: [a-zA-Z0-9/-]+"
+    color: f.Green
+
+  - description: interface physical link status Up (Green) Down (Red)
+    regex: \b(?<!-)(up|Up|UP|ON|on|On|in)(?!-)\b|\b(?<!-)(down|Down|DOWN|OFF|Off|off|out)(?!-)\b
+    color:
+      1: f.Green bold
+      2: f.Red italic
+
+  - description: interface last flapped
+    regex: Last flapped\s+:\s.*$|(Last link state change time:)\s.*
+    color: f.Cyan bold
+
+  - description: interface input rate
+    regex: Input(\speak)? rate\s*:\s[0-9]+\s((bps)|(bits\/sec,))\s(\([0-9]+\spps\))?
+    color: f.Green bold
+
+  - description: interface output rate
+    regex: Output(\speak)? rate\s*:\s[0-9]+\s((bps)|(bits\/sec,))\s(\([0-9]+\spps\))?
+    color: f.Pink bold
+
+  - description: show interfaces interface name
+    regex: \b((Fast|Gigabit|TenGigabit|FortyGigabit|TwentyFiveGigabit|HundredGigabit|Bundle\-)?Ethernet|Mgmt)(\s\d+)?([\/a-zA-Z0-9\._-]+)?\b
+    color: f.Purple
+
+  - description: show interfaces interface name (Virtual)
+    regex: \b([lL]oopback|LOOPBACK|\bagg\b|[Aa]ggregate[Pp]ort|port-group|SSLVPN|SSL VPN)(\s\d+)?|(?<!-)(vlan|Vlan|VLAN)(?!-)(\s\d+)?
+    color: f.Purple
+
+  - description: show interfaces interface name (Other)
+    regex: \b([dD]ialer|Dot11Radio|ATM|BRI|Tunnel(Group-)?Async|BVI|Null|[Pp]ort-channel|Virtual-(Access|Dot11Radio|PPP|Template))(\s\d+)?([\/a-zA-Z0-9\._-]+)?\b
+    color: f.Purple
+
+  - description: show interfaces medium-type Copper (Orange) Fiber (Yellow)
+    regex: \b([Cc]opper)|([Ff]iber)\b
     color:
       1: f.Orange
       2: f.Yellow
     exclusive: true
 
-  - description: show interfaces Encapsulation protocol (Yellow)
+  - description: show interfaces encapsulation protocol
     regex: (Encapsulation protocol is)\s([\/a-zA-Z0-9\._-]+)?
     color: f.Yellow bold
     exclusive: true
 
-  - description: show interfaces duplex mode AUTO (Green) Full (Yellow) Half (Orange) Unknown (Pink)
-    regex: \s(AUTO)|\s([Ff]ull([\-]duplex)?)|\s([Hh]alf)|\s([Uu]nknown)
+  - description: show interfaces duplex mode AUTO (Green) Full Half (Orange) Unknown (Dark)
+    regex: \s(AUTO)|\s([Ff]ull([\-]duplex)?)|\s([Hh]alf([\-]duplex)?)|\s([Uu]nknown)
     color:
       1: f.Green
       2: f.Yellow
@@ -284,7 +148,7 @@ rules:
       4: f.Dark
     exclusive: true
 
-  - description: show interfaces speed 10M (Orange) 100M (Yellow) 1000M (Green) 10G (Purple) 40G (Cyan) 100G(Red)
+  - description: show interfaces speed 10M (Orange) 100M (Yellow) 1000M (Green) 10G (Purple) 40G (Cyan) 100G (Red)
     regex: (10M)|(100M)|(1000M)|(10G)|(40G)|(100G)
     color:
       1: f.Orange
@@ -298,38 +162,172 @@ rules:
   - description: show interfaces address
     regex: (no\sip\saddress|No\sIPv6\saddress)|(no\saddress)
     color:
-      1: f.Pink
+      1: f.Red
       2: f.Dark
     exclusive: true
 
-  - description: show run (To match vrf forwarding name) (Green)
-    regex: \s\svrf forwarding (.*)$
-    color: f.Green
+  - description: interface description
+    regex: ^(\s*)(description[:]?|Description[:]?)\s.*$
+    color: f.Dark italic
+    exclusive: true
 
-  - description: Switchport Mode ACCESS (Cyan) or TRUNK (Purple)
+  - description: interface othe description
+    regex: (description[:]?|Description[:]?|(list-)?remark|system message)\s.*$
+    color: f.Yellow italic
+
+  - description: vlan description
+    regex: \sname\s.*
+    color: f.Yellow italic
+    exclusive: true
+
+  - description: switchport mode enable (Green) or disable (Pink)
+    regex: ([a-zA-Z]+\-)?([Ee]nabled?)(?![-d])|([a-zA-Z]+\-)?([Dd]isabled?)(?![-d])
+    color:
+      1: f.Green bold italic
+      2: f.Green bold
+      3: f.Pink bold italic
+      4: f.Pink bold
+
+  - description: interfaces in shutdown (Red) no shutdown (Green)
+    regex: (shutdown)|(no\sshutdown)
+    color:
+      1: f.Red bold strike invert
+      2: f.Green
+    exclusive: true
+
+  - description: switchport trunk Allowed
+    regex: only(\s\d+,).*
+    color: f.Orange italic
+    exclusive: true
+
+  - description: switchport trunk Native
+    regex: \b([Nn]ative)\b
+    color: f.Orange
+    exclusive: true
+
+  - description: switchport mode ACCESS (Cyan) or TRUNK
     regex: \b(?<!-)(access|Access|ACCESS)(?!-)\b|\b(trunk|Trunk|TRUNK)\b
     color:
       1: f.Cyan
       2: f.Purple bold
 
-  - description: Switchport Mode no Switchport | routed
+  - description: switchport mode no switchport|routed
     regex: ^\s*no\sswitchport|routed\s
     color: f.Cyan italic
 
-  - description: Switchport Trunk Allowed (Orange)
-    regex: only(\s\d+,).*
-    color: f.Orange italic
+  - description: show slot install name
+    regex: ((?<=(?<!-|_)install(?!-)).*)|((?<!-)install(?!-))
+    color:
+      1: f.Orange
+      2: f.Green italic
     exclusive: true
 
-  - description: Switchport Trunk Native (Orange)
-    regex: \b([Nn]ative)\b
+  - description: show slot number
+    regex: \bSlot\b.*$
+    color: f.Green
+    exclusive: true
+
+  # DHCP server
+  - description: ip dhcp pool
+    regex: (?<=ip\sdhcp\spool\s).*$
+    color: f.Orange bold
+    exclusive: true
+
+  - description: dhcp server
+    regex: \b(domain-name|default-router|dns-server|([a-zA-Z]+\-)?host(?!-)|client-(name|identifier)|option|lease(-threshold)?|hardware-address)\b|\snetwork\s
+    color: f.Green
+
+  - description: dhcp excluded-address
+    regex: excluded-address
+    color: f.Pink bold
+    exclusive: true
+
+  # Route
+  - description: show ip bgp summary local AS Number
+    regex: \slocal AS number ([0-9].*)$
+    color: f.Purple bold
+
+  - description: show ip bgp VRF name
+    regex: ^BGP summary information for (VRF .*)$
+    color: f.Green
+
+  - description: show ip route VRF name
+    regex: "^VRF name: .*"
+    color: f.Green
+
+  - description: route name
+    regex: \s(C|R|L|O|B|I|V|N1|E1|SU|IA|E2|L1|L2)\s
+    color: f.Yellow
+
+  - description: default router
+    regex: S\*
     color: f.Orange
+
+  - description: route-map name
+    regex: (route-map\s|ip\snat\s)[\/a-zA-Z0-9_-]+|\soverload|\sdomain|\b([a-zA-Z]+\-)?service(?!-)\b
+    color: f.Cyan bold
+
+  - description: route-map permit (Green) or deny (Red)
+    regex: ([a-z]+\-)?(permit)(\-[a-z]+)?|([a-z]+\-)?(deny)(\-[a-z]+)?
+    color:
+      1: f.Green
+      2: f.Green
+      3: f.Green
+      4: f.Red bold
+      5: f.Red bold
+      6: f.Red bold
+
+  - description: route-map permit seq number
+    regex: \s(permit|deny)([,\s\sa-z]+)?([0-9]+)$
+    color:
+      3: f.Cyan bold
+
+  - description: route-map set clauses
+    regex: (?<=\s\s[Ss]et\s)[^\s].*|(?<=\s\s[Mm]atch\s)[^\s].*
+    color: f.Green
+
+  # ACL|Prefix-List
+  - description: prefix-list name
+    regex: (prefix-list\s[a-zA-Z0-9_-]+)
+    color: f.Purple bold
     exclusive: true
 
-# VSU 
-  - description: show switch virtual 
+  - description: prefix-list matching prefixes eq|gre
+    regex: \s(eq\s[0-9]+|eq\s[a-z]+|ge\s[0-9]{1,2}|le\s[0-9]+)
+    color: f.Green
+    exclusive: true
+
+  - description: ip access-list name
+    regex: (ip\s)?access-(list[s]?|group)\s?([a-zA-Z0-9_-]+)?
+    color: f.Purple bold
+    exclusive: true
+
+  - description: vrf name
+    regex: \s\s\svrf .*
+    color: f.Green
+    exclusive: true
+
+  - description: local-as number
+    regex: local-as .*
+    color: f.Purple bold
+
+  # Wireless
+  - description: wlan-config
+    regex: (?<=wlan-config\s\d)[\d^\s].*
+    color: f.Orange bold
+    exclusive: true
+
+  - description: show ap-config summary Run (Green) Quit
+    regex: \b(Run)\b|\b(Quit)\b
+    color:
+      1: f.Green
+      2: f.Red italic
+    exclusive: true
+
+  # VSU
+  - description: show switch virtual
     regex: \b(LOCAL)|(REMOTE)|(ACTIVE|STANDBY|OK)\b
-    color: 
+    color:
       1: f.Orange
       2: f.Cyan
       3: f.Green
@@ -338,59 +336,56 @@ rules:
     regex: ([Pp]riority)(\s[0-9]+)?|(?<!-)(virtual)(-[a-z]+)?(?!-)|(standalone)
     color: f.Orange
 
-# Security Policies
-  - description: Security policies (white) from-zone (Green) to-zone (Pink) policy (Green)
+  # Security Policies
+  - description: security policies (White) from-zone (Green) to-zone policy (Green)
     regex: (set security policies) (from-zone [a-zA-Z0-9_-]+ )(to-zone [a-zA-Z0-9_-]+ )(policy [a-zA-Z0-9_-]+ )
     color:
       1: f.White
       2: f.Green bold
-      3: f.Pink bold
+      3: f.Red bold
       4: f.Green bold
 
-  - description: Security policies description (Orange)
+  - description: security policies description
     regex: \s\".*\"|
     color: f.Orange
     exclusive: true
 
-  - description: Security Policies - Description (Cyan)
+  - description: security policies  description
     regex: (description ["\/a-zA-Z0-9\.\s_\*(),-]+)$
     color: f.Cyan bold
 
-  - description: Security Policies - Match|Then (White)
+  - description: security policies match|then
     regex: \b([a-zA-Z]+\-)?(match|then)(?!-)\b
     color: f.Green italic
 
-  - description: Security Policies - Source-Adress (Green)
+  - description: security policies source-adress
     regex: (source-address [\/a-zA-Z0-9\._-]+)?
     color: f.Green bold
 
-  - description: Security Policies - Destination-Adress (Pink)
+  - description: security policies destination-address
     regex: (destination-address [\/a-zA-Z0-9\._-]+)?
     color: f.Pink bold
 
-  - description: Security Policies - Application (Purple)
+  - description: security policies application
     regex: ((.*-)?application)(\s.*)
-    color: 
+    color:
       1: f.Purple bold
       2: f.Purple bold
       3: f.Yellow
 
-  - description: Security Policies - deny (Pink Italic Style)
+  - description: security policies deny
     regex: deny$
-    color: f.Pink bold italic
+    color: f.Red bold italic
 
-  - description: Security Policies - no (Pink Italic Style)
+  - description: security policies no|unset
     regex: \bno\b\s|\sunset\s.*$
-    color: f.Pink bold italic
+    color: f.Red bold italic
 
-  - description: Security Policies - log (Pink)
-    regex: (\slog\s[/a-zA-Z0-9\._-]+)?$
+  - description: security policies log
+    regex: ([a-z]+\-)?(log)\s([a-z]+)?
     color: f.Pink bold
 
-
-
-# show ip bgp summary
-  - description: Matches not Established bgp states (Pink)
+  - description: matches not established bgp states
     regex: ((Idle.*)|(Active)|(\bConnect\b)|(Established[l]?)|(Estab[l]?))
     color:
       1: f.Green
@@ -398,22 +393,42 @@ rules:
       3: f.Pink bold
       4: f.Pink bold
 
-  - description: show ip bgp summary Local AS Number (Purple)
-    regex: \slocal AS number ([0-9].*)$
-    color: f.Purple bold
+  - description: no service password encryption
+    regex: no service password-encryption
+    color: f.Red bold italic
+    exclusive: true
 
-  - description: show ip bgp VRF NAME (Green)
-    regex: ^BGP summary information for (VRF .*)$
+  - description: alloweccess
+    regex: (?<=allowaccess)[^\S+].*|\b([Aa]llowed)\b
+    color: f.Cyan bold italic
+    exclusive: true
+
+  - description: links
+    regex: \b(?<!-)https?(:[\/0-9a-zA-Z.]+)?(?!-)\b
+    color: f.Green italic
+
+  - description: server
+    regex: \b([a-zA-Z]+\-)?server(?!-)\b|\b(monitor\ssession)\s\d+
+    color: f.Green
+    exclusive: true
+
+  - description: conted line
+    regex: (session|exec)-timeout|\slogin\s.*|stopbits|access-class|transport (input|output).*$
+    color: f.Cyan bold
+    exclusive: true
+
+  - description: /!
+    regex: ^!
+    color: f.Dark italic
+    exclusive: true
+
+  - description: show run (To match vrf forwarding name)
+    regex: \s\svrf forwarding (.*)$
     color: f.Green
 
-  - description: show ip route VRF NAME (Green)
-    regex: '^VRF name: .*'
-    color: f.Green
-
-  - description: route  NAME (Yellow)
-    regex: \s(C|R|L|O|B|I|V|N1|E1|SU|IA|E2|L1|L2)\s
-    color: f.Yellow
-
-  - description: Default Router (Orange)
-    regex: S\*
-    color: f.Orange
+  # Error-info
+  - description: error log
+    regex: (\%ARP-4-DUPADDR:|%DHCPD-4-PING_CONFLICT:|%ARP-4-ARPCHANGEMAC:)|(%DHCPD-4-LEASETHRESHOLD:)
+    color:
+      1: f.Red
+      2: f.Yellow
