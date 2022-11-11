@@ -1,0 +1,705 @@
+EG2100-P#show
+
+Translating "show"...
+% Unrecognized host or address, or protocol not running.
+EG2100-P#show run
+
+Building configuration...
+Current configuration: 18181 bytes
+
+version EG_RGOS 11.9(4)B12P3, Release(08192723)
+hostname EG2100-P
+!
+wlan-config 2 WSDSNNY
+ ssid-code utf-8
+ band-select enable
+ tunnel local
+!
+ap-group default
+ interface-mapping 2 100 ap-wlan-id 1
+!
+ap-config all
+ ap-vlan 100
+ assoc-rssi 20 radio 1
+ assoc-rssi 20 radio 2
+ response-rssi 25 radio 1
+ response-rssi 25 radio 2
+!
+ac-controller
+ active-bin-file flash:storage/apbin/AP_RGOS11.1(9)B1P30_S1C2-21_08190210_install.bin
+ ap-image auto-upgrade
+ capwap ctrl-ip 1.1.1.1
+ no ac-control disable
+ country CN
+ country US
+ 802.11g network rate 1 disabled
+ 802.11g network rate 2 disabled
+ 802.11g network rate 5 disabled
+ 802.11g network rate 6 supported
+ 802.11g network rate 9 supported
+ 802.11g network rate 11 mandatory
+ 802.11g network rate 12 supported
+ 802.11g network rate 18 supported
+ 802.11g network rate 24 supported
+ 802.11g network rate 36 supported
+ 802.11g network rate 48 supported
+ 802.11g network rate 54 supported
+ 802.11b network rate 1 disabled
+ 802.11b network rate 2 disabled
+ 802.11b network rate 5 disabled
+ 802.11b network rate 11 mandatory
+ 802.11a network rate 6 mandatory
+ 802.11a network rate 9 supported
+ 802.11a network rate 12 mandatory
+ 802.11a network rate 18 supported
+ 802.11a network rate 24 mandatory
+ 802.11a network rate 36 supported
+ 802.11a network rate 48 supported
+ 802.11a network rate 54 supported
+!
+app-auth tup-app tupApp
+!
+app-auth direct-url mina.ruijieyun.com
+!
+app-auth offline-detect
+!
+app-auth cfg-opt id-mac
+app-auth cfg-opt syn-proxy
+app-auth cfg-opt tup-pass
+!
+app-auth set-mode visitor
+app-auth proxy-url http://11.11.11.11/wx rdt-type 10
+!
+app-auth local-auth enable
+app-auth local-auth subscriber mac-limit 0
+!
+app-auth wx-state direct
+cloud-diagnosis enable
+cloud-diagnosis server http://api.cloud.ruijie.com.cn/rgdev/nbm/config/config.json
+cloud-diagnosis sync-server http://api.cloud.ruijie.com.cn/rgdev/nbm/version/sync
+ip session filter 0
+flow-pre-mgr enable
+flow-pre-mgr protocol-enable
+!
+flow-pre-mgr upload-pps-limit 0
+!
+flow-pre-mgr new-session-limit start-up limit 0
+flow-pre-mgr new-session-limit virtual-host limit 0
+flow-pre-mgr new-session-limit real-host limit 0
+!
+flow-pre-mgr total-limit 100000
+!
+convert port 1 to wan
+!
+route-map Gi0/2 permit 10
+ match ip address 101
+ set ip next-hop 192.168.10.1
+!
+route-map Gi0/2 permit 20
+ match ip address 102
+ set interface dialer 1
+!
+ip access-list standard 1
+ 10 permit any
+!
+ip access-list extended 101
+ 10 deny ip host 192.168.0.202 any
+ 15 deny ip host 192.168.0.240 any
+ 30 deny ip 192.168.3.0 0.0.0.255 192.168.0.0 0.0.0.255
+ 40 deny ip 192.168.0.0 0.0.0.255 192.168.3.0 0.0.0.255
+ 50 permit ip any any
+!
+ip access-list extended 102
+ 10 deny ip 192.168.3.0 0.0.0.255 192.168.0.0 0.0.0.255
+ 15 deny ip 192.168.0.0 0.0.0.255 192.168.3.0 0.0.0.255
+ 20 permit ip any any
+!
+ip access-list extended 110
+!
+ip access-list extended 2397
+ 10 deny ospf any any
+ 20 deny 112 any any
+ 30 deny icmp any any
+ 40 deny udp any eq domain any
+ 50 deny tcp any any eq www
+ 60 deny tcp any any eq 443
+ 1000 permit ip any any
+ list-remark ���ط�����ר��
+!
+servctl service apm off
+servctl service was off
+servctl service rlog off
+servctl service sslvpn off
+servctl service police_log off
+sntp interval 7200
+sntp server ntp.ntsc.ac.cn
+sntp server ntp1.aliyun.com
+sntp enable
+wids
+!
+black-white-list
+!
+ip tcp keepalive
+ip local pool l2tppool 192.168.3.1 192.168.3.254
+!
+time-range any
+ periodic Daily 0:00 to 23:59
+!
+time-range day_time
+ periodic Daily 6:00 to 18:00
+!
+time-range night_time
+ periodic Weekdays 0:00 to 5:59
+ periodic Daily 18:01 to 23:59
+!
+time-range unwork_time
+ periodic Weekdays 0:00 to 7:59
+ periodic Weekdays 12:00 to 13:00
+ periodic Weekdays 18:01 to 23:59
+!
+time-range weekend
+ periodic Weekend 0:00 to 23:59
+!
+time-range work_time
+ periodic Weekdays 8:00 to 12:00
+ periodic Weekdays 13:00 to 18:00
+!
+time-range working_time
+ periodic Weekdays 0:00 to 23:59
+!
+web-auth template iportal
+ page-suite default
+!
+web-auth template eportalv1
+!
+route-auto-choose cnii GigabitEthernet 0/0 192.168.10.1
+route-auto-choose cnii dialer 1
+dialer-list 1 protocol ip permit
+!
+username admin privilege 15 password 7 13170743072817797c541c
+!
+aaa new-model
+!
+aaa authentication ppp default subs
+!
+anti-sniper interface GigabitEthernet 0/0
+ tcp-port off
+ http-modify off
+!
+identify-application templete tpl-SMEs
+identify-application enable
+!
+identify-application custom-group ������ҳӦ��~route
+ app-add WEBӦ��
+ app-add �ƶ�WEBӦ��
+ app-add ��̳PC
+ app-add HTTP���繺��
+ app-add HTTP��Ϸ
+ app-add WEB����
+ app-add ��Ѷ����WEB
+ app-add ��ͨ��ҳ�����ϸ
+ app-add ��Ѷ��Ϸƽ̨
+ app-add ��Ѷ��Ϸ��ȫ��
+ app-add ��Ϸ����
+ app-add ��ʱͨѶ���
+ app-add �������ļ�����
+ app-add Զ�̷���Э��
+ app-add ��ʱͨѶ_MOBILE
+ app-add �罻_MOBILE
+ app-add WEB_MOBILE
+ app-add ����_MOBILE
+!
+identify-application custom-group ���������Ӧ��~route
+ app-add ��Ƶ��ý�����
+ app-add P2PӦ�����
+!
+identify-application custom-group ������ƵӦ��~route
+ app-add HTTP��Ƶ
+ app-add ��Ƶ|Ӱ��_MOBILE
+!
+identify-application custom-group ��������Ӧ��~route
+ app-add HTTP����
+ app-add HTTP�ϴ�
+ app-add �������
+ app-add ����Ӳ��
+ app-add ����_MOBILE
+!
+identify-application custom-group ����������Ϸ~route
+ app-add ��Ѷ����
+ app-add ��������
+ app-add �Ѻ���Ϸ
+!
+identify-application custom-group QQ�����Ȩ���Ӧ��~route
+ app-add Ӣ���������
+ app-add Ӣ�����˵�¼
+!
+identify-application custom-group tupApp
+ app-add ΢��
+!
+identify-application key DNS
+identify-application key �����ʼ�Э��
+identify-application key WEBӦ��
+identify-application key ��_MOBILE
+identify-application key HTTP���繺��
+identify-application key �����
+identify-application key �ƶ�WEBӦ��
+identify-application key ��̳PC
+identify-application key ��̳-Mobile
+identify-application key �������
+identify-application key �������_Mobile
+identify-application key WEB����
+identify-application key ������Ѷ
+identify-application key ������Ѷ_Mobile
+identify-application key WEB����-Mobile
+identify-application key ���������
+identify-application key �������-Mobile
+identify-application key �Ӽ����
+identify-application key �Ķ�_MOBILE
+identify-application key �Ķ�С˵
+identify-application key �������
+identify-application key WEB_MOBILE
+identify-application key HTTP�罻Ӧ��
+identify-application key �罻_MOBILE
+identify-application key ��ʱͨѶ���
+identify-application key IP����绰
+identify-application key ICMP-DETAIL
+identify-application key VPNӦ��
+identify-application key �칫OA
+identify-application key ��Ƶ����
+identify-application key ��ʱͨѶ_MOBILE
+identify-application key ΢��
+identify-application key ��ͨ��ҳ�����ϸ
+identify-application inhibitive ����TCP
+identify-application inhibitive ����UDP
+identify-application inhibitive TCP����Ӧ��
+identify-application inhibitive UDP����Ӧ��
+identify-application inhibitive TCP����Ӧ��
+identify-application inhibitive UDP����Ӧ��
+identify-application inhibitive ������Ϸ���
+identify-application block �Ƿ�DNS
+identify-application other �������Э��
+identify-application other ·��Э��
+identify-application other ����֧��|��������_MOBILE
+identify-application other ��Ʊ���
+identify-application other �������ļ�����
+identify-application other ��ݿ�
+identify-application other Զ�̷���Э��
+identify-application other ��Ϸ_MOBILE
+identify-application other RFC
+identify-application other IP-RAW
+identify-application other IPЭ����
+identify-application other ����_MOBILE
+identify-application other ����Ӳ��
+app-proxy expect enable
+no ssl-audit mode
+!
+anti-pap set-node 0
+url-filter-notice display �㱻��ֹ���������վ������ϵ��վ����Ա��
+no url-audit exact-filter
+no url-rule apply-referer
+!
+url-class un_audit_class
+ comment unaudit
+!
+url-object un_audit_object
+ class �����
+ class �ű�δ֪
+ class un_audit_class
+!
+content-object web_block_im
+!
+content-audit deny-stat ip 192.168.100.33
+!
+content-policy _AUDIT_DEFAULT
+!
+content-policy _TOP_PRIORITY
+ im-rule 200 time-range any action deny audit comment ��ֹ����QQ�ʺ�
+ im-rule 200 im-type qq relation or account web_block_im
+ app-rule 198 time-range any app-group any action permit audit vpn vip
+ app-rule 199 time-range any app-group any action permit audit vip
+ app-rule 200 time-range any app-group Block_Group action deny audit
+ app-rule 197 time-range any app-group Block_Group action deny audit vpn
+ url-rule 997 url-object un_audit_object time-range any action permit comment ����Ƶ���ַ
+!
+content-policy-relate relate auth-subscriber any policy _TOP_PRIORITY
+content-policy-relate relate subscriber any policy _TOP_PRIORITY
+content-policy-relate relate subscriber any policy _AUDIT_DEFAULT
+no register device
+!
+cwmp
+ acs url http://cloudj.rj.link/service/acs/H1N50EZ001071/rcn/acs
+ cpe inform interval 180
+ timer cpe-timeout 90
+ disable cloud-reg
+!
+dev-audit enable
+service dhcp
+no ip dhcp dns dynamic
+ip dhcp server option-log enable
+!
+ip dhcp pool ap_dhcp_pool
+ dns-server 114.114.114.114
+!
+ip name-server 119.29.29.29
+ip name-server 114.114.114.114
+!
+dns-proxy
+!
+mail-service enable
+feedback frequency 60
+flow-audit ip-log enable
+flow-audit enable
+flow-audit intf-rt refresh 1
+flow-audit intf-rt storage 10 max
+!
+ip-group 1
+ description ����
+ ip-range 192.168.100.33
+!
+layer23 classify enable
+!
+layer23 scc-attention enable
+!
+network-group name "Out_Server" parent "/"
+!
+subscriber static name "Vpn_Group" parent "/"
+subscriber static name "xiang" parent "/Vpn_Group" password 7 "131d1b4b0326"
+subscriber static name "home" parent "/Vpn_Group" password 7 "09271a1f22"
+subscriber static name "ruijie" parent "/Vpn_Group" password 7 "076f517c414771"
+!
+subscriber set "xiang" attribute vpn-branch
+subscriber set "home" attribute vpn-branch
+subscriber set "ruijie" attribute pwd-edit
+!
+subscriber allow "xiang" privilege vpn
+subscriber allow "home" privilege vpn
+subscriber allow "ruijie" privilege vpn
+line-quality track enable
+line-quality track interface dialer 1 enable
+line-quality track interface dialer 1 icmp 119.29.29.29
+line-quality track interface dialer 1 dns 8.8.8.8
+line-quality track interface dialer 1 tcp z.cn
+line-quality track interface dialer 1 icmp enable
+line-quality track interface dialer 1 dns enable
+line-quality track interface dialer 1 tcp enable
+line-quality enable
+!
+sys-mode gateway
+!
+specify interface GigabitEthernet 0/1 wan
+!
+no nat-log enable
+no ip nat-log on
+password policy min-size 8
+password policy strong
+service password-encryption
+!
+ip http port 80
+ip http secure-port 4430
+enable service web-server all
+enable service web-server http
+enable service web-server https
+enable service web-server guest-auth
+no rnfp-ping-reply enable
+!
+control-plane
+ ef-rnfp enable
+ security deny wan tcp port 20097
+ security deny wan-web
+ security deny wan-telnet-ssh
+ security web permit 192.168.0.101
+ security web permit 119.29.29.29
+ security web permit 199.29.29.29
+ anti-arp-spoof scan 20
+ anti-arp-spoof
+ attack threshold 500
+!
+control-plane protocol
+ scpp list 2397 bw-rate 3600 bw-burst-rate 3600
+ no acpp
+!
+control-plane manage
+ port-filter
+ arp-car 20 log
+ scpp list 2397 bw-rate 3600 bw-burst-rate 3600
+ no acpp
+!
+control-plane data
+ no glean-car
+ scpp list 2397 bw-rate 3600 bw-burst-rate 3600
+ no acpp
+!
+ip rns 300
+ icmp-echo 119.29.29.29 out-interface dialer 1
+  threshold 2000
+  timeout 2000
+  frequency 10000
+!
+ip rns schedule 300 start-time now life forever
+!
+ip rns reaction-configuration 300 react allfail action-type Track
+!
+single-logon ad-domain enable
+logging filter rule exact-match module LOGIN mnemonic LOGIN_FAIL level 5
+logging userinfo command-log
+logging buffered 65535
+logging file flash:syslog/syslog
+logging server 127.0.0.1
+clock timezone AsiaShanghai +8 0
+!
+track 300 rns 300
+ delay up 12 down 12
+!
+vpdn enable
+vpdn limit_rate 15
+!
+vpdn-group pptp
+! Default PPTP VPDN group
+ accept-dialin
+  protocol pptp
+  virtual-template 2
+!
+vpdn-group l2tp
+! Default L2TP VPDN group
+ accept-dialin
+  protocol l2tp
+  virtual-template 2
+!
+link-check disable
+!
+web-ac topology switch-connect GigabitEthernet 0/2
+web quick-set
+macc start-set
+webmaster username admin password 7 1100320c18430873427a75
+frn
+!
+flow-control Gi0/0
+ comment tpl-SMEs
+ !
+ channel-tree inbound
+  no auto-pir enable
+  !
+  channel-group root parent null cir 1000000 pir 1000000 pri 2 per-net per-pir 2000 limit 100
+  channel-group key parent root cir 400000 pir 1000000 pri 0 per-net limit 100
+  channel-group normal parent root cir 100000 pir 1000000 pri 4 per-net limit 100
+  channel-group unkey parent root cir 50000 pir 900000 pri 6 per-net limit 100
+  channel-default normal
+ !
+ channel-tree outbound
+  no auto-pir enable
+  !
+  channel-group root parent null cir 1000000 pir 1000000 pri 2 per-net per-pir 2000 limit 100
+  channel-group key parent root cir 400000 pir 1000000 pri 0 per-net limit 100
+  channel-group normal parent root cir 100000 pir 1000000 pri 4 per-net limit 100
+  channel-group unkey parent root cir 50000 pir 900000 pri 6 per-net limit 100
+  channel-default normal
+ !
+ flow-rule 1000 app-group Other_Group time-range any
+ flow-rule 1000 action pass in-channel normal out-channel normal default comment Normal_Group_of_NON_VPN
+ flow-rule 999 app-group Key_Group time-range any
+ flow-rule 999 action pass in-channel key out-channel key default comment Key_Group_of_NON_VPN
+ flow-rule 998 app-group Unkey_Group time-range any
+ flow-rule 998 action pass in-channel unkey out-channel unkey default comment Inhib_Group_of_NON_VPN
+ flow-rule 992 subscriber VIP time-range any
+ flow-rule 992 action pass in-channel key out-channel key comment VIP_Group_of_NON_VPN
+ flow-rule 991 network-group Out_Server time-range any
+ flow-rule 991 action pass in-channel key out-channel key comment Out_Server_of_NON_VPN
+!
+flow-control Di1
+ comment tpl-SMEs
+ !
+ channel-tree inbound
+  no auto-pir enable
+  !
+  channel-group root parent null cir 1000000 pir 1000000 pri 2 per-net per-pir 2000 limit 800
+  channel-group key parent root cir 400000 pir 1000000 pri 0 per-net limit 800
+  channel-group normal parent root cir 100000 pir 1000000 pri 4 per-net limit 800
+  channel-group unkey parent root cir 50000 pir 900000 pri 6 per-net limit 800
+  channel-default normal
+ !
+ channel-tree outbound
+  no auto-pir enable
+  !
+  channel-group root parent null cir 1000000 pir 1000000 pri 2 per-net per-pir 2000 limit 800
+  channel-group key parent root cir 400000 pir 1000000 pri 0 per-net limit 800
+  channel-group normal parent root cir 100000 pir 1000000 pri 4 per-net limit 800
+  channel-group unkey parent root cir 50000 pir 900000 pri 6 per-net limit 800
+  channel-default normal
+ !
+ flow-rule 1000 app-group Other_Group time-range any
+ flow-rule 1000 action pass in-channel normal out-channel normal default comment Normal_Group_of_NON_VPN
+ flow-rule 999 app-group Key_Group time-range any
+ flow-rule 999 action pass in-channel key out-channel key default comment Key_Group_of_NON_VPN
+ flow-rule 998 app-group Unkey_Group time-range any
+ flow-rule 998 action pass in-channel unkey out-channel unkey default comment Inhib_Group_of_NON_VPN
+ flow-rule 992 subscriber VIP time-range any
+ flow-rule 992 action pass in-channel key out-channel key comment VIP_Group_of_NON_VPN
+ flow-rule 991 network-group Out_Server time-range any
+ flow-rule 991 action pass in-channel key out-channel key comment Out_Server_of_NON_VPN
+!
+enable secret 5 $1$6rPP$9uxFFB8B6FsEBy80
+enable service ssh-server
+interface GigabitEthernet 0/0
+ description 1000M
+ bandwidth 1000000
+ dldp 119.29.29.29 192.168.10.1
+ nexthop 192.168.10.1
+ reverse-path
+ ip address 192.168.10.3 255.255.255.0
+ ip nat outside
+!
+interface GigabitEthernet 0/1
+ nexthop 192.168.10.1
+ pppoe enable
+ pppoe-client dial-pool-number 1 no-ddr
+ ip nat outside
+!
+interface GigabitEthernet 0/2
+ reverse-path
+ no ip unreachables
+ no ip redirects
+ no ip mask-reply
+ ip address 192.168.0.1 255.255.255.0
+ arp gratuitous-send interval 10
+ ip policy route-map Gi0/2
+ ip nat inside
+!
+interface Loopback 0
+ ip address 1.1.1.1 255.255.255.255
+!
+interface Loopback 1
+ ip address 192.168.3.1 255.255.255.0
+!
+interface dialer 1
+ bandwidth 1000000
+ reverse-path
+ ip address negotiate
+ ppp chap hostname gzDSL16138872@163.gd
+ ppp chap password 0 85511311
+ ppp pap sent-username gzDSL16138872@163.gd password 0 85511311
+ dialer pool 1
+ dialer-group 1
+ ip nat outside
+ flow-policy Di1
+!
+interface Virtual-Template 2
+ reverse-path
+ ip tcp adjust-mss 1368
+ ip mtu 1408
+ ip unnumbered Loopback 1
+ peer default ip address pool l2tppool
+ ppp ipcp dns 119.29.29.29 114.114.114.114
+ ppp authentication pap chap
+ ip nat inside
+!
+interface SSLVPN 0
+!
+interface SSLVPN 1
+!
+wlansec 2
+ security rsn enable
+ security rsn ciphers aes enable
+ security rsn akm psk enable
+ security rsn akm psk set-key ascii dsnny123456789
+ security wpa enable
+ security wpa ciphers aes enable
+ security wpa akm psk enable
+ security wpa akm psk set-key ascii dsnny123456789
+!
+app route switch
+app route mode new-flow
+!
+ip nat pool nat_pool prefix-length 24
+ address interface dialer 1 match interface dialer 1
+ address interface GigabitEthernet 0/0 match interface GigabitEthernet 0/0
+!
+ip nat inside source list 1 pool nat_pool overload
+!
+ip route 0.0.0.0 0.0.0.0 GigabitEthernet 0/0 192.168.10.1
+ip route 0.0.0.0 0.0.0.0 dialer 1
+ip route 10.10.10.0 255.255.255.0 GigabitEthernet 0/2 192.168.0.254
+ip route 192.168.0.0 255.255.0.0 GigabitEthernet 0/2 192.168.0.254
+!
+ddns service 3322 domain gzdsnny.f3322.net username xiangghtyt password tmcel1103 interface Di1
+ddns service oray username xiangghtyt password tmcel1103 interface Di1
+!
+wis enable
+!
+line console 0
+line vty 0 4
+ password 7 04250d0f340a2a4742765c
+!
+end
+
+EG2100-P#show ap-config summary
+========= show ap status =========
+Radio: Radio ID or Band: 2.4G = 1#, 5G = 2#
+       E = enabled, D = disabled, N = Not exist, V = Virtual AP
+       Current Sta number
+       Channel: * = Global
+       Power Level = Percent
+
+Online AP number: 2
+Offline AP number: 0
+
+AP Name                                  IP Address      Mac Address    Radio               Radio               Up/Off time   State
+---------------------------------------- --------------- -------------- ------------------- ------------------- ------------- -----
+���۲�                                   192.168.100.2   8005.889f.3dd9 1  E   1   11*  100 2  E   9   36   100  108:01:06:50 Run
+չ��                                     192.168.100.1   0074.9ce9.e0bc 1  E   0    6*  100 2  E   1  157   100  108:01:08:51 Run
+EG2100-P#show int
+EG2100-P#show interface
+========================== GigabitEthernet 0/0 ========================
+Index(dec):1 (hex):1
+GigabitEthernet 0/0 is UP  , line protocol is UP
+  Hardware is MTK-SGMII GigabitEthernet, address is 8005.8877.b28c (bia 8005.8877.b28c)
+  Description: 1000M
+  Interface address is: 192.168.10.3/24
+  ARP type: ARPA, ARP Timeout: 3600 seconds
+  Interface IPv6 address is:
+    No IPv6 address
+  MTU 1500 bytes, BW 1000000 Kbit
+  Encapsulation protocol is Ethernet-II, loopback not set
+  Keepalive interval is 10 sec , set
+  Carrier delay is 2 sec
+  Ethernet attributes:
+    Last link state change time: 2022-10-26 01:27:03
+    Time duration since last link state change: 16 days, 16 hours,  7 minutes, 34 seconds
+    Priority is 0
+    Medium-type is Copper
+    Admin duplex mode is AUTO, oper duplex is Full
+    Admin speed mode is AUTO, oper speed is 1000M
+  Rxload is 1/255, Txload is 1/255
+   10 seconds input rate 561623 bits/sec, 73 packets/sec
+   10 seconds output rate 51420 bits/sec, 49 packets/sec
+    6912055603 packets input, 5059761659400 bytes, 199227 no buffer, 199227 dropped
+    Received 46589624 broadcasts, 0 runts, 0 giants
+    0 input errors, 0 CRC, 0 frame, 0 overrun, 0 abort
+    7785366508 packets output, 7129442582423 bytes, 0 underruns, 0 no buffer, 0 dropped
+    0 output errors, 0 collisions, 0 interface resets
+========================== GigabitEthernet 0/1 ========================
+Index(dec):2 (hex):2
+GigabitEthernet 0/1 is UP  , line protocol is UP
+  Hardware is MTK-SGMII GigabitEthernet, address is 8005.8877.b28d (bia 8005.8877.b28d)
+  Interface address is: no ip address
+  ARP type: ARPA, ARP Timeout: 3600 seconds
+  Interface IPv6 address is:
+    No IPv6 address
+  MTU 1500 bytes, BW 100000 Kbit
+  Encapsulation protocol is Ethernet-II, loopback not set
+  Keepalive interval is 10 sec , set
+  Carrier delay is 2 sec
+  Ethernet attributes:
+    Last link state change time: 2022-08-17 02:41:04
+    Time duration since last link state change: 86 days, 14 hours, 53 minutes,  8 seconds
+    Priority is 0
+    Medium-type is Copper
+    Admin duplex mode is AUTO, oper duplex is Full
+    Admin speed mode is AUTO, oper speed is 100M
+  Rxload is 1/255, Txload is 1/255
+   10 seconds input rate 130048 bits/sec, 237 packets/sec
+   10 seconds output rate 118975 bits/sec, 238 packets/sec
+    1591811208 packets input, 163074737541 bytes, 0 no buffer, 0 dropped
+    Received 1863314 broadcasts, 0 runts, 0 giants
+    0 input errors, 0 CRC, 0 frame, 0 overrun, 0 abort
+    1546672767 packets output, 131726545225 bytes, 0 underruns, 0 no buffer, 0 dropped
+    0 output errors, 0 collisions, 0 interface resets
