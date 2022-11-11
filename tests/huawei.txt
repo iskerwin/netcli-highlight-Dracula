@@ -1,0 +1,24 @@
+<HUAWEI> system-view
+[HUAWEI] sysname Switch
+[Switch] vlan 50
+[Switch-vlan50] quit
+[Switch] interface vlanif 50
+[Switch-Vlanif50] ip address 10.10.1.1 24
+[Switch-Vlanif50] quit
+[Switch] interface gigabitethernet 0/0/10   //GE0/0/10为使用Web网管登录Switch的PC与Switch相连的物理接口编号，请按照实际现网情况进行选择。
+[Switch-GigabitEthernet0/0/10] port link-type access
+[Switch-GigabitEthernet0/0/10] port default vlan 50
+[Switch-GigabitEthernet0/0/10] quit
+[Switch] aaa
+[Switch-aaa] local-user admin password irreversible-cipher Helloworld@6789
+[Switch-aaa] local-user admin privilege level 15
+[Switch-aaa] local-user admin service-type http
+[Switch-aaa] quit
+
+undo ip address 172.16.0.10 255.255.255.252
+
+ip address 172.16.0.18 255.255.255.252
+
+dis cu
+
+save
