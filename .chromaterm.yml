@@ -292,18 +292,13 @@ rules:
     color: f.Purple bold
     exclusive: true
 
-  - description: prefix-list matching prefixes eq|gre
-    regex: \s(eq\s[0-9]+|eq\s[a-z]+|ge\s[0-9]{1,2}|le\s[0-9]+)
-    color: f.Green
-    exclusive: true
-
   - description: ip access-list name
     regex: (ip\s)?access-(list[s]?|group)\s?([a-zA-Z0-9_-]+)?
     color: f.Purple bold
     exclusive: true
 
   - description: access-list rules type
-    regex: \s\b(ahp|eigrp|esp|gre|icmp|igmp|ip|ipinip|nos|ospf|pcp|pim|tcp|udp|eq|gt|lt|neq|range)\b\s
+    regex: \s(ahp|eigrp|esp|gre|ge|dscp|next-hop|le|icmp|igmp|ip|ipinip|nos|ospf|pcp|pim|tcp|udp|eq|gt|lt|neq|range)\s
     color: f.Cyan
 
   - description: vrf name
