@@ -1,0 +1,33 @@
+RG-S7805C#show int
+========================== GigabitEthernet 1/1/1 ========================
+Index(dec):1 (hex):1
+GigabitEthernet 1/1/1 is UP  , line protocol is UP
+  Hardware is Broadcom 5464 GigabitEthernet, address is c0b8.e666.3dc3 (bia c0b8.e666.3dc3)
+  Description: [TO-WS7208-A-Gi0/2]
+  Interface address is: no ip address
+  Interface IPv6 address is:
+    No IPv6 address
+  MTU 1500 bytes, BW 1000000 Kbit
+  Encapsulation protocol is Ethernet-II, loopback not set
+  Keepalive interval is 10 sec , set
+  Carrier delay is 2 sec
+  Ethernet attributes:
+    Last link state change time: 2021-11-13 13:44:31
+    Time duration since last link state change: 363 days, 19 hours, 44 minutes, 36 seconds
+    Priority is 0
+    Medium-type is Copper
+    Admin duplex mode is AUTO, oper duplex is Full
+    Admin speed is AUTO, oper speed is 1000M
+    Flow control admin status is OFF, flow control oper status is OFF
+    Admin negotiation mode is OFF, oper negotiation state is ON
+    Storm Control: Broadcast is OFF, Multicast is OFF, Unicast is OFF
+  Rxload is 4/255, Txload is 1/255
+  Input peak rate: 959834650 bits/sec, at 2022-09-07 15:01:15
+  Output peak rate: 997198516 bits/sec, at 2022-03-30 11:43:08
+   10 seconds input rate 15897934 bits/sec, 7967 packets/sec
+   10 seconds output rate 373858 bits/sec, 253 packets/sec
+    153505780954 packets input, 35300837944457 bytes, 0 no buffer, 0 dropped
+    Received 56687 broadcasts, 0 runts, 0 giants
+    0 input errors, 0 CRC, 0 frame, 0 overrun, 0 abort
+    11240431081 packets output, 1806887219621 bytes, 0 underruns , 3296502023 dropped
+    0 output errors, 0 collisions, 0 interface resets

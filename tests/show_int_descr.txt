@@ -1,0 +1,36 @@
+RG-S7805C#show int des
+Interface                                Status   Administrative Description
+---------------------------------------- -------- -------------- -----------
+FastEthernet 1/1/1                       up       up             [TO-WS7208-A-Gi0/2]
+FastEthernet 1/1/2                       up       up             [TO-EG3000GE-Primary-Gi0/1]
+FastEthernet 1/1/3                       up       up             [SPAN-Destination]
+FastEthernet 1/1/4                       up       up             [TO_RGS5750C-IPTV-Core_Gi0/3]
+FastEthernet 1/1/5                       up       up             [UAC_Manage]
+GigabitEthernet 1/1/6                    down     up
+GigabitEthernet 1/1/7                    up       up
+GigabitEthernet 1/1/8                    down     up
+GigabitEthernet 1/1/9                    up       up
+GigabitEthernet 1/1/10                   down     up
+TenGigabitEthernet 1/1/11                down     up
+TenGigabitEthernet 1/1/12                down     up
+TenGigabitEthernet 1/1/13                down     up
+TenGigabitEthernet 1/1/14                down     up
+TenGigabitEthernet 1/2/15                down     up
+FortyGigabitEthernet 1/2/50              up       up             [VSU-BFD]
+FortyGigabitEthernet 1/2/51              up       up             [VSU-VSL]
+FortyGigabitEthernet 1/2/52              up       up             [VSU-VSL]
+FortyGigabitEthernet 2/1/49              down     up
+FortyGigabitEthernet 2/1/50              down     up
+TwentyFiveGigabitEthernet 2/1/51         down     up
+TwentyFiveGigabitEthernet 2/1/52         down     up
+TwentyFiveGigabitEthernet 2/2/49         down     up
+TwentyFiveGigabitEthernet 2/2/50         up       up             [VSU-BFD]
+TwentyFiveGigabitEthernet 2/2/51         up       up             [VSU-VSL]
+AggregatePort 1                          up       up
+Loopback 1                               up       up
+VLAN 1                                   up       up             [Wireless]
+VLAN 20                                  up       up             [Office]
+VLAN 100                                 up       up             [Gateway]
+VLAN 1000                                up       up
+Mgmt 1/0                                 down     up             IP management Console
+Mgmt 2/0                                 down     up             IP management Console
