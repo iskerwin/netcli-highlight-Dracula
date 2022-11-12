@@ -78,7 +78,7 @@ The purpose of this repo is to give you an idea of the power of having syntax hi
 ## Usage
 
 - Clone this repo: `git clone git@github.com:KerwinKwong/netcli-highlight-Dracula.git`
-- Get inside the project: `cd netcli-highlight/`
+- Get inside the project: `cd netcli-highlight-Dracula/`
 - Install the following package: `pip3 install chromaterm`
 - Copy the config file to your home dir: `cp .chromaterm.yml ~/.chromaterm.yml`
 - If you use **bash** as your shell, issue: `echo 'ssh() { /usr/bin/ssh "$@" | ct; }' >> ~/.bash_profile`
@@ -132,7 +132,7 @@ found is used.
 
 If no file is found, a default one is created in your home directory.
 
-> Check out [`contrib/rules`](https://github.com/KerwinKwong/netcli-highlight-Dracula/tree/main/rules);
+> Check out [`rules`](https://github.com/KerwinKwong/netcli-highlight-Dracula/tree/main/rules);
 > it has some topic-specific rules that are not included in the defaults.
 
 ### Description
