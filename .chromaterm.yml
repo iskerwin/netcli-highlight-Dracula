@@ -2,16 +2,16 @@
 
 palette:
   # Created from https://github.com/dracula/dracula-theme
-  Black : "#282a36"
-  Grey  : "#44475a"
-  White : "#f8f8f2"
-  Dark  : "#6272a4"
-  Cyan  : "#8be9fd"
-  Green : "#50fa7b"
+  Black: "#282a36"
+  Grey: "#44475a"
+  White: "#f8f8f2"
+  Dark: "#6272a4"
+  Cyan: "#8be9fd"
+  Green: "#50fa7b"
   Orange: "#ffb86c"
-  Pink  : "#ff79c6"
+  Pink: "#ff79c6"
   Purple: "#bd93f9"
-  Red   : "#ff5555"
+  Red: "#ff5555"
   Yellow: "#f1fa8c"
 
 rules:
@@ -124,11 +124,11 @@ rules:
     color: f.Purple
 
   - description: show interfaces interface name (Other)
-    regex: \b([dD]ialer|Dot11Radio|ATM|BRI|Tunnel(Group-)?Async|BVI|Null|[Pp]ort-channel|Virtual-(Access|Dot11Radio|PPP|Template))(\s\d+)?([\/a-zA-Z0-9\._-]+)?\b
+    regex: \b([dD]ialer|Dot11Radio|ATM|BRI|[tT]unnel(Group-)?Async|BVI|Null|[Pp]ort-channel|Virtual-(Access|Dot11Radio|PPP|Template))(\s\d+)?([\/a-zA-Z0-9\._-]+)?\b
     color: f.Purple
 
   - description: show interfaces medium-type Copper (Orange) Fiber (Yellow)
-    regex: \b([Cc]opper)|([Ff]iber)\b
+    regex: \b([cC]opper)|([fF]iber)\b
     color:
       1: f.Orange
       2: f.Yellow
@@ -140,7 +140,7 @@ rules:
     exclusive: true
 
   - description: show interfaces duplex mode AUTO (Green) Full Half (Orange) Unknown (Dark)
-    regex: \s(AUTO)|\s([Ff]ull([\-]duplex)?)|\s([Hh]alf([\-]duplex)?)|\s([Uu]nknown)
+    regex: \s(AUTO)|\s([fF]ull([\-]duplex)?)|\s([hH]alf([\-]duplex)?)|\s([uU]nknown)
     color:
       1: f.Green
       2: f.Yellow
@@ -181,7 +181,7 @@ rules:
     exclusive: true
 
   - description: switchport mode enable (Green) or disable (Pink)
-    regex: ([a-zA-Z]+\-)?([Ee]nabled?)(?![-d])|([a-zA-Z]+\-)?([Dd]isabled?)(?![-d])
+    regex: ([a-zA-Z]+\-)?([eE]nabled?)(?![-d])|([a-zA-Z]+\-)?([dD]isabled?)(?![-d])
     color:
       1: f.Green bold italic
       2: f.Green bold
@@ -201,7 +201,7 @@ rules:
     exclusive: true
 
   - description: switchport trunk Native
-    regex: \b([Nn]ative)\b
+    regex: \b([nN]ative)\b
     color: f.Orange
     exclusive: true
 
@@ -333,7 +333,7 @@ rules:
       3: f.Green
 
   - description: show switch virtual config
-    regex: ([Pp]riority)(\s[0-9]+)?|(?<!-)(virtual)(-[a-z]+)?(?!-)|(standalone)
+    regex: ([pP]riority)(\s[0-9]+)?|(?<!-)(virtual)(-[a-z]+)?(?!-)|(standalone)
     color: f.Orange
 
   # Security Policies
@@ -399,7 +399,7 @@ rules:
     exclusive: true
 
   - description: alloweccess
-    regex: (?<=allowaccess)[^\S+].*|\b([Aa]llowed)\b
+    regex: (?<=allowaccess)[^\S+].*|\b([aA]llowed)\b
     color: f.Cyan bold italic
     exclusive: true
 
