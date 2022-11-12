@@ -1,6 +1,7 @@
+# @format
 ---
 rules:
-# GENERAL
+  # GENERAL
   - description: For your (username)@(devicename)>   (Green Light) (Light Blue)
     regex: (^\w*)@([a-zA-Z0-9\,\-]*>)
     color:
@@ -19,9 +20,8 @@ rules:
     regex: Description:\s.*
     color: f#F701FF bold
 
-
-#JUNOS
-# Security Policies
+  #JUNOS
+  # Security Policies
   - description: Security policies (white) from-zone (Light Green) to-zone (Light Red) policy (Bright Green)
     regex: (set security policies) (from-zone [a-zA-Z0-9_-]+ )(to-zone [a-zA-Z0-9_-]+ )(policy [a-zA-Z0-9_-]+ )
     color:
@@ -31,7 +31,7 @@ rules:
       4: f#6CFF00 bold
 
   - description: Security Policies - Description (Light Blue)
-    regex: (description ["\/a-zA-Z0-9\.\s_\*(),-]+)$   #"
+    regex: (description ["\/a-zA-Z0-9\.\s_\*(),-]+)$ #"
     color: f#00D1DB bold
 
   - description: Security Policies - Match|Then (White)
@@ -58,9 +58,9 @@ rules:
     regex: (log [/a-zA-Z0-9\._-]+)?$
     color: f#FF0000 bold
 
-# Show interface
+  # Show interface
   - description: Interface - Physical Interface (Bright Green)
-    regex: '^Physical interface: [a-zA-Z0-9/-]+'
+    regex: "^Physical interface: [a-zA-Z0-9/-]+"
     color: f#6CFF00
 
   - description: Interface - Physical Link Status Up (Bright Green) Down (Red)
@@ -85,14 +85,13 @@ rules:
     regex: Current address:.*
     color: f#F701FF bold
 
-
-## ARISTA / CISCO
-# General
+  ## ARISTA / CISCO
+  # General
   - description: Cisco MAC Address Notation (Purple)
     regex: ([0-9a-f]{4}\.[0-9a-f]{4}\.[0-9a-f]{4}).*
     color: f#FF0049
 
-# show run
+  # show run
   - description: Interfaces in shutdown (Red) no shutdown (Bright Green)
     regex: ((\s\sshutdown)|\s\sno shutdown)
     color:
@@ -138,8 +137,7 @@ rules:
     regex: local-as .*
     color: f#F701FF bold
 
-
-# Interfaces
+  # Interfaces
   - description: show interfaces description. Interface status in (Red)
     regex: (\s\s\sdown|notpresent|lowerlayerdown|admin\sdown)
     color: f#ff0000 bold
@@ -176,8 +174,7 @@ rules:
       1: f#6CFF00
       2: f#ff0000 bold
 
-
-# show ip bgp summary
+  # show ip bgp summary
   - description: Matches not Established bgp states (Red)
     regex: ((Idle.*)|(Active)|(Connect)|(Established[l]?)|(Estab[l]?))
     color:
@@ -197,10 +194,10 @@ rules:
       1: f#00F969
 
   - description: show ip route VRF NAME (Light Green)
-    regex: '^VRF name: .*'
+    regex: "^VRF name: .*"
     color: f#00F969
 
   - description: show ip route Interface NAME (Bright Green)
-    regex: ', (Vlan[0-9]+$|Ethernet[0-9]+$)'
+    regex: ", (Vlan[0-9]+$|Ethernet[0-9]+$)"
     color:
       1: f#6CFF00
