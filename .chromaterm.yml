@@ -283,7 +283,7 @@ rules:
       3: f.Cyan bold
 
   - description: route-map set clauses
-    regex: (?<=\s\s[Ss]et\s)[^\s].*|(?<=\s\s[Mm]atch\s)[^\s].*
+    regex: (?<=\s\s[sS]et\s)[^\s].*|(?<=\s\s[mM]atch\s)[^\s].*
     color: f.Green
 
   # ACL|Prefix-List
@@ -301,6 +301,10 @@ rules:
     regex: (ip\s)?access-(list[s]?|group)\s?([a-zA-Z0-9_-]+)?
     color: f.Purple bold
     exclusive: true
+
+  - description: access-list rules type
+    regex: \s\b(ahp|eigrp|esp|gre|icmp|igmp|ip|ipinip|nos|ospf|pcp|pim|tcp|udp|eq|gt|lt|neq|range)\b\s
+    color: f.Cyan
 
   - description: vrf name
     regex: \s\s\svrf .*
