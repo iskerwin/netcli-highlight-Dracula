@@ -72,14 +72,14 @@ The purpose of this repo is to give you an idea of the power of having syntax hi
 
 ## Pre-requisites
 
-- Python 3.7+ Recommended
+- Python 3.11+ Recommended
 - [Chromaterm](https://github.com/hSaria/ChromaTerm) - A big shout out to **[hSaria](https://github.com/hSaria)** for buliding this wonderful tool that even work with interactive applications such as ssh/telnet.
 
 ## Usage
 
 - Clone this repo: `git clone git@github.com:KerwinKwong/netcli-highlight-Dracula.git`
 - Get inside the project: `cd netcli-highlight-Dracula/`
-- Install the following package: `pip3 install chromaterm`
+- Install the following package: `pip3.11 install chromaterm`
 - Copy the config file to your home dir: `cp .chromaterm.yml ~/.chromaterm.yml`
 - If you use **bash** as your shell, issue: `echo 'ssh() { /usr/bin/ssh "$@" | ct; }' >> ~/.bash_profile`
 - If you use **zsh** as your shell, issue: `echo 'ssh() { /usr/bin/ssh "$@" | ct; }' >> ~/.zshrc`
