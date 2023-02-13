@@ -83,7 +83,7 @@ The purpose of this repo is to give you an idea of the power of having syntax hi
 - Copy the config file to your home dir: `cp .chromaterm.yml ~/.chromaterm.yml`
 - If you use **bash** as your shell, issue: `echo 'ssh() { /usr/bin/ssh "$@" | ct; }' >> ~/.bash_profile`
 - If you use **zsh** as your shell, issue: `echo 'ssh() { /usr/bin/ssh "$@" | ct; }' >> ~/.zshrc`
-- Prefix your command with ct. It's that simple.`ct ssh somewhere` , `ct ssh somewhere` or `ct screen somewhere`
+- Prefix your command with ct. It's that simple.`ct ssh somewhere` , `ct telnet somewhere` or `ct screen somewhere`
 
 ### Persistence
 
@@ -92,7 +92,6 @@ instance, here's one for `ssh`.
 
 ```shell
 alias ssh="ct ssh"
-or/and
 alias telnet="ct telnet"
 ```
 
