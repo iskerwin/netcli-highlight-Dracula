@@ -93,6 +93,7 @@ instance, here's one for `ssh`.
 ```shell
 alias ssh="ct ssh"
 alias telnet="ct telnet"
+alias screen="ct screen"
 ```
 
 If you want to highlight your entire terminal, have ChromaTerm spawn your shell by
