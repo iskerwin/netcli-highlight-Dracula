@@ -77,7 +77,7 @@ The purpose of this repo is to give you an idea of the power of having syntax hi
 
 ## Usage
 
-- Clone this repo: `git clone git@github.com:kerwinxxxxxx/netcli-highlight-Dracula.git`
+- Clone this repo: `git clone git@github.com:iskerwin/netcli-highlight-Dracula.git`
 - Get inside the project: `cd netcli-highlight-Dracula/`
 - Install the following package: `pip3.11 install chromaterm`
 - Copy the config file to your home dir: `cp .chromaterm.yml ~/.chromaterm.yml`
