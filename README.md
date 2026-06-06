@@ -12,15 +12,16 @@ Built on top of ChromaTerm and designed for network engineers working with Cisco
 
 ### Interface Status
 
-Show Interfaces
+![](resources/show_interface.png)
 
 ### BGP Summary
 
-Show BGP
+![](resources/show_ip_bgp_summary.png)
 
 ### Routing Table
 
-Show Route
+![](resources/show_ip_route.png)
+
 
 ### Firewall Policy
 
