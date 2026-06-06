@@ -1,13 +1,12 @@
 palette:
   # Created from https://github.com/dracula/dracula-theme
-  Black : "#282a36"
-  Grey  : "#44475a"
-  White : "#f8f8f2"
-  Dark  : "#6272a4"
-  Cyan  : "#8be9fd"
-  Green : "#50fa7b"
-  Orange: "#ffb86c"
-  Pink  : "#ff79c6"
-  Purple: "#bd93f9"
-  Red   : "#ff5555"
-  Yellow: "#f1fa8c"
+palette:
+  Red       : "#FF5555"
+  Pink      : "#FF79C6"
+  Purple    : "#BD93F9"
+  Orange    : "#FFB86C"
+  Yellow    : "#F1FA8C"
+  Green     : "#50FA7B"
+  Cyan      : "#8BE9FD"
+  Comment   : "#6272A4"
+  Foreground: "#F8F8F2"
