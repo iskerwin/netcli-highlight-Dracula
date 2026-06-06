@@ -174,8 +174,8 @@ tests/
 ├── Ruijie_show_int.txt
 ├── show_int_descr.txt
 ├── show_rib_route_ipv6_bgp.txt
-├── firewall.ios
-└── eg.ios
+├── firewall.txt
+└── eg.txt
 ```
 
 Test highlighting locally:
